@@ -1,0 +1,98 @@
+server:
+  port: 5056
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,env"
+eureka:
+  instance:
+    metadata-map:
+      zone: us-east-1a  # 예시 가용 영역
+
+  client:
+    region: us-east-1
+    availabilityZones:
+      us-east-1: us-east-1a,us-east-1b,us-east-1c
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: gateway-service
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: test1234
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: 'http://www.localhost:3000, http://localhost:3000, http://so-sik.com:3000, http://so-sik.com:3000, https://43.200.224.252:3000, http://so-sik.com, http://127.0.0.1:3000'
+            allow-credentials: true
+            allowedHeaders: '*'
+            allowedMethods:
+              - PUT
+              - GET
+              - POST
+              - DELETE
+              - OPTIONS
+              - PATCH
+      routes:
+
+        - id: open-api
+          uri: lb://member-service
+          predicates:
+            - Path=/members/v1/sign-up, /members/v1/sign-in, /oauth/**, /members/v1/passwd, /members/v1/sign-out, /members/v1/validation/{email}, /members/v1/images/{memberId}, /oauth/v1, /notifications/subscribe/{memberId},
+
+        - id: member-service
+          uri: lb://member-service
+          predicates:
+            - Path= /members/v1, /members/v1/detail,/members/v1/weight,/members/v1/target-weight-data, /members/v1/weight-record-check
+          filters:
+            - name: AuthorizationHeaderFilter
+              args:
+                headerName: Authorization
+
+        - id: food-service
+          uri: lb://food-service
+          predicates:
+            - Path=/food/**
+
+        - id: intake-service
+          uri: lb://intake-service
+          predicates:
+            - Path= /target-calorie/v1/{today}, /target-calorie/v1, /intake/v1/rank, /intake/v1/{createdAt}, /intake/v1/food
+          filters:
+            - name: AuthorizationHeaderFilter
+              args:
+                headerName: Authorization
+
+        - id: community-open-api
+          uri: lb://community-service
+          predicates:
+            - Path= /post/v1/{postId}, /post/v1,
+            - Method= GET
+
+        - id: community-service
+          uri: lb://community-service
+          predicates:
+            - Path= /comment/v1, /comment/v1/{commentId}, /post/v1, /post/v1/{postId}
+            - Method= POST, PATCH, DELETE, OPTIONS, GET
+          filters:
+            - name: AuthorizationHeaderFilter
+              args:
+                headerName: Authorization
+
+
+jwt:
+  access-token-validity-in-seconds: 86400000
+  refresh-token-validity-in-seconds: 864000000
+  secret-key: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345KJHVJGCTHJGBGHCVGFrgtah2ty6ahdsryjms562n357
