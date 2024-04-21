@@ -8,5 +8,6 @@ spring:
       server:
         git:
           uri: https://github.com/Kimminwoo02/configServer.git
-          search-paths: YML
+          search-paths:
+            - 'YML'
           default-label: main
