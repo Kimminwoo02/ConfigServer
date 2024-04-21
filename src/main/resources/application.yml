@@ -7,6 +7,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Kimminwoo02/configServer
-          search-paths: test-cloud-config-file/**
+          uri: https://github.com/Kimminwoo02/configServer.git
+          search-paths: YML
           default-label: main
