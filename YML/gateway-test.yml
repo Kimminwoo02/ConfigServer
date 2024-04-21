@@ -96,3 +96,6 @@ jwt:
   access-token-validity-in-seconds: 86400000
   refresh-token-validity-in-seconds: 864000000
   secret-key: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345KJHVJGCTHJGBGHCVGFrgtah2ty6ahdsryjms562n357
+
+announcement:
+  hi: "33잘 작동하는지 Test 중입니다."
