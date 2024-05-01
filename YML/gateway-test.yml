@@ -77,10 +77,10 @@ spring:
           uri: lb://food-service
           predicates:
             - Path=/food/**
-#          metadata:
-#            lb: # LoadBalancer 설정 추가
-#              enabled: true
-#              scheme: IP_HASH # IP 해싱 사용
+          metadata:
+            lb: # LoadBalancer 설정 추가
+              enabled: true
+              scheme: IP_HASH # IP 해싱 사용
 
         - id: intake-service
           uri: lb://intake-service
