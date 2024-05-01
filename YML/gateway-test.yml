@@ -19,6 +19,7 @@ management:
 
 eureka:
   instance:
+    lease-renewal-interval-in-seconds: 30
     metadata-map:
       zone: us-east-1a  # 예시 가용 영역
 
