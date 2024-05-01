@@ -5,4 +5,4 @@ spring:
       port: 6379
       password: test1234
 announcement:
-  hi: "잘 작동하는지 22Test 중입니다."
+  hi: "애플리케이션 공통 속성 테스트 중입니다."
