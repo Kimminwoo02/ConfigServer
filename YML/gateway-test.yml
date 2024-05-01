@@ -58,7 +58,6 @@ spring:
               - OPTIONS
               - PATCH
       routes:
-
         - id: open-api
           uri: lb://member-service
           predicates:
@@ -90,7 +89,6 @@ spring:
             - name: AuthorizationHeaderFilter
               args:
                 headerName: Authorization
-
         - id: community-open-api
           uri: lb://community-service
           predicates:
@@ -114,5 +112,5 @@ jwt:
   secret-key: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345KJHVJGCTHJGBGHCVGFrgtah2ty6ahdsryjms562n357
 
 announcement:
-  hi: "i'm doing my test! "
+  hi: " 지금 테스트 중입니다!  "
 
