@@ -76,7 +76,9 @@ spring:
           uri: lb://food-service
           predicates:
             - Path=/food/**
-
+          lb:
+            ip-hash: true
+            
         - id: intake-service
           uri: lb://intake-service
           predicates:
@@ -110,3 +112,4 @@ jwt:
 
 announcement:
   hi: "i'm doing my test! "
+
