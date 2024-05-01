@@ -111,6 +111,6 @@ jwt:
   refresh-token-validity-in-seconds: 864000000
   secret-key: rkGU45258GGhiolLO2465TFY5345kGU45258GGhiolLO2465TFY5345KJHVJGCTHJGBGHCVGFrgtah2ty6ahdsryjms562n357
 
-announcement:
-  hi: " 지금 테스트 중입니다!  "
+#announcement:
+#  hi: " 지금 테스트 중입니다!  "
 

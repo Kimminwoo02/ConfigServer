@@ -4,3 +4,5 @@ spring:
       host: localhost
       port: 6379
       password: test1234
+announcement:
+  hi: "잘 작동하는지 22Test 중입니다."
