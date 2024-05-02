@@ -4,8 +4,6 @@ spring:
       host: localhost
       port: 6379
       password: test1234
-announcement:
-  hi: "애플리케이션 공통 속성 테스트 중입니다."
   jackson:
     time-zone: Asia/Seoul
   cloud:
@@ -34,6 +32,11 @@ announcement:
     url: jdbc:mysql://localhost:10000/sosik?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
     username: test1
     password: test1
+
+announcement:
+  hi: "애플리케이션 공통 속성 테스트 중입니다."
+
+
 
 management:
   endpoints:
