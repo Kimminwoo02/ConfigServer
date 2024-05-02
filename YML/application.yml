@@ -28,7 +28,7 @@ management:
       produce: b3_multi  # 추적 정보를 송신할 때 사용할 포맷으로 B3(Multi-header) 포맷을 사용합니다. 이 포맷은 각 추적 정보(예: 추적 ID, 스팬 ID 등)를 별도의 헤더로 전송합니다. 추적 ID, span ID, 부모 span ID 등을 HTTP 헤더로 전송
 
 announcement:
-  hi: "애플리케이션 공통 속성 테스트 중입니다."
+  hi: "애플리케이션 공통 속성 테스트 중입니다. 지금 변경해보겠습니다."
 
 
 #        Propagation 옵션 종류
