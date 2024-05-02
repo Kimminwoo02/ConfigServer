@@ -6,6 +6,34 @@ spring:
       password: test1234
 announcement:
   hi: "애플리케이션 공통 속성 테스트 중입니다."
+  jackson:
+    time-zone: Asia/Seoul
+  cloud:
+    config:
+      discovery:
+        enabled: false
+
+  application:
+    name: food-service
+
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+      settings:
+        web-allow-others: true
+
+  datasource:
+    #h2
+    #    driver-class-name: org.h2.Driver
+    #    url: jdbc:h2:mem:testdb
+    #    username: sa
+
+    # mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:10000/sosik?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: test1
+    password: test1
 
 management:
   endpoints:
@@ -18,9 +46,6 @@ management:
     propagation: # 분산 추적 데이터가 어떻게 넘어가는지를 정의
       consume: b3  # 추적 정보를 수신할 때 사용할 포맷으로 B3(Single) 포맷을 사용합니다. B3은 Zipkin 추적 시스템에서 널리 사용되는 표준입니다. b3 : 추적 ID와 Span ID를 HTTP 헤더로 수신하는 방식
       produce: b3_multi  # 추적 정보를 송신할 때 사용할 포맷으로 B3(Multi-header) 포맷을 사용합니다. 이 포맷은 각 추적 정보(예: 추적 ID, 스팬 ID 등)를 별도의 헤더로 전송합니다. 추적 ID, span ID, 부모 span ID 등을 HTTP 헤더로 전송
-#    zipkin:
-#      tracing:
-#        endpoint: "http://localhost:9411/api/v2/spans"  # Zipkin 서버의 API 엔드포인트를
 
 #        Propagation 옵션 종류
 #W3C Trace Context: W3C 표준 추적 컨텍스트 형식으로, traceparent와 tracestate 두 가지 헤더를 사용하여 추적 정보를 전달합니다. traceparent 헤더는 전체 추적 시스템을 거치는 트랜잭션을 식별하고, tracestate는 벤더별 추가 정보를 포함할 수 있습니다.
